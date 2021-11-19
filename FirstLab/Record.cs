@@ -73,52 +73,54 @@ namespace FirstLab
 
         public void Redact(string field)
         {
-            
-            switch (field.ToLower())
-            {
-                case "имя":
-                    this.FirstName = Console.ReadLine();
-                    break;
-                case "фамилия":
-                    this.SecondName = Console.ReadLine();
-                    break;
-                case "отчество":
-                    this.LastName = Console.ReadLine();
-                    break;
-                case "телефон":
-                    int temp = 0;
-                    if (int.TryParse(Console.ReadLine(), out temp))
-                        this.Number = temp;
-                    else
-                    {
-                        Console.WriteLine("Введите корректный номер"); Redact("телефон");
-                    }
-                    break;
-                case "страна":
-                    this.Country = Console.ReadLine();
-                    break;
-                case "дата рождения":
-                    DateTime tempDate;
-                    if (DateTime.TryParse(Console.ReadLine(), out tempDate))
-                        this.Birthday = tempDate;
-                    else { Console.WriteLine("Введите корректную дату"); Redact("дата рождения"); }
-                    break;
-                case "организация":
-                    this.Organisation = Console.ReadLine();
-                    break;
-                case "должность":
-                    this.Job = Console.ReadLine();
-                    break;
-                case "заметки":
-                    this.Others = Console.ReadLine();
-                    break;
-                case "отмена":
-                    break;
-                default:
-                    Console.WriteLine("Вы ввели несуществующую команду\nВведите иную команду");
-                     Redact(Console.ReadLine());
-                    break;
+            bool flag = true;
+                switch (field.ToLower())
+                {
+                    case "имя":
+                        this.FirstName = Console.ReadLine();
+                        break;
+                    case "фамилия":
+                        this.SecondName = Console.ReadLine();
+                        break;
+                    case "отчество":
+                        this.LastName = Console.ReadLine();
+                        break;
+                    case "телефон":
+                        int temp = 0;
+                        if (int.TryParse(Console.ReadLine(), out temp))
+                            this.Number = temp;
+                        else
+                        {
+                            Console.WriteLine("Введите корректный номер"); Redact("телефон");
+                        }
+                        break;
+                    case "страна":
+                        this.Country = Console.ReadLine();
+                        break;
+                    case "дата рождения":
+                        DateTime tempDate;
+                        if (DateTime.TryParse(Console.ReadLine(), out tempDate))
+                            this.Birthday = tempDate;
+                        else { Console.WriteLine("Введите корректную дату"); Redact("дата рождения"); }
+                        break;
+                    case "организация":
+                        this.Organisation = Console.ReadLine();
+                        break;
+                    case "должность":
+                        this.Job = Console.ReadLine();
+                        break;
+                    case "заметки":
+                        this.Others = Console.ReadLine();
+                        break;
+                    case "отмена":
+                        flag = false;
+                        break;
+                    default:
+                        Console.WriteLine("Вы ввели несуществующую команду\nВведите иную команду");
+                        break;
             }
+
+            if (flag) { Console.WriteLine("Изменение проведено. Укажите следующее поле"); Redact(Console.ReadLine()); }
         }
 
         public string ShowAllInfo()
