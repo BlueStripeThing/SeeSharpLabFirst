@@ -43,10 +43,14 @@ namespace FirstLab
                     prog.ShowAll();
                     break;
                 case "закончить":
+                    Console.WriteLine("С вами было приятно работать, коллега");
                     return false;
                     break;
                 case "помощь":
                     Console.WriteLine("Добавить - создание новой записи\nИзменить - изменение существующей записи\nУдалить - удаление записи\nПросмотр - просмотр информации в записи\nВсе - просмотр всей базы\nПомощь - напоминание о существущих командах\nЗакончить - для завершения работы");
+                    break;
+                default:
+                    Console.WriteLine("Несуществующая команда");
                     break;
             }
             Console.WriteLine();
@@ -55,8 +59,6 @@ namespace FirstLab
 
         public void Add()
         {
-            //Console.ReadLine(), Console.ReadLine(), int.Parse(Console.ReadLine()), Console.ReadLine()
-
             Console.WriteLine("Введите обязательные поля в указанном порядке, каждое с новой строчки - Имя, Фамилия, Номер, Страна");
             string tempName = Console.ReadLine();
             string tempSurame = Console.ReadLine();
@@ -70,10 +72,10 @@ namespace FirstLab
             notebook.Add(record.Id, record);
         }
         public void Change(int id)
-        {
-            Console.WriteLine("Для редактирования записи, укажите поле для изменения (Имя/фамилия/отчество/телефон/страна/дата рождения/организация/должность/заметки\nДля отмены редактирования введите слово \"Отмена\"");
+        {   
             if (notebook.ContainsKey(id))
             {
+                Console.WriteLine("Для редактирования записи, укажите поле для изменения (Имя/фамилия/отчество/телефон/страна/дата рождения/организация/должность/заметки\nДля отмены редактирования введите слово \"Отмена\"");
                 notebook[id].Redact(Console.ReadLine()); ;
             }
             else Console.WriteLine("Элемента с таким Id не существует");
@@ -102,7 +104,7 @@ namespace FirstLab
             while(it.MoveNext())
             {
                 Console.WriteLine(it.Current.Value.ToString()); 
-                Console.WriteLine("---------------------------------------------");
+                Console.WriteLine("--------------------------");
             }
         }
 
