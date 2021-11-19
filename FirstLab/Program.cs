@@ -28,19 +28,33 @@ namespace FirstLab
                     prog.Add();
                     break;
                 case "изменить":
-                    Console.WriteLine("Введите Id записи для изменеия");
-                    prog.Change(int.Parse(Console.ReadLine()));
+                    if (notebook.Count != 0)
+                    {
+                        Console.WriteLine("Введите Id записи для изменеия");
+                        prog.Change(int.Parse(Console.ReadLine()));
+                    }
+                    else Console.WriteLine("Записи отсутствуют");
                     break;
                 case "удалить":
-                    Console.WriteLine("Введите Id записи для удаления");
-                    prog.Delete(int.Parse(Console.ReadLine()));
+                    if (notebook.Count != 0)
+                    {
+                        Console.WriteLine("Введите Id записи для удаления");
+                        prog.Delete(int.Parse(Console.ReadLine()));
+                    }
+                    else Console.WriteLine("Записи отсутствуют");
                     break;
-                case "просмотр":  
-                    Console.WriteLine("Введите Id записи для просмотра");
-                    prog.Show(int.Parse(Console.ReadLine()));
+                case "просмотр":
+                    if (notebook.Count != 0)
+                    {
+                        Console.WriteLine("Введите Id записи для просмотра");
+                        prog.Show(int.Parse(Console.ReadLine()));
+                    }
+                    else Console.WriteLine("Записи отсутствуют");
                     break;
                 case "все":
+                    if (notebook.Count!=0)
                     prog.ShowAll();
+                    else Console.WriteLine("Записи отсутствуют");
                     break;
                 case "закончить":
                     Console.WriteLine("С вами было приятно работать, коллега");
